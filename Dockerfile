@@ -11,7 +11,7 @@ RUN python3 -m pip install opencv-python
 RUN python3 -m pip install --upgrade tensorflow requests
 #RUN python3 -m pip install tensorflow-gpu #only useable with CUDA
 
-ADD data .
-ADD darkflow .
-RUN cd darkflow && git pull && git checkout master
-RUN python3 -m pip install -e ./darkflow/
+ADD data ./data/
+ADD darkflow ./darkflow/
+RUN python3 -m pip install cython
+RUN cd darkflow && python3 -m pip install -e .
