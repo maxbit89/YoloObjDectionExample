@@ -9,9 +9,14 @@ RUN apt-get install -y wget
 RUN apt-get install -y git
 RUN python3 -m pip install opencv-python
 RUN python3 -m pip install --upgrade tensorflow requests
+RUN python3 -m pip install tensorflow-object-detection-api
 #RUN python3 -m pip install tensorflow-gpu #only useable with CUDA
-
-ADD data ./data/
-ADD darkflow ./darkflow/
 RUN python3 -m pip install cython
+RUN python3 -m pip install Pillow
+RUN python3 -m pip install pandas
+
+#ADD data ./data/ #should be mounted
+ADD app ./app/
+ADD darkflow ./darkflow/
+
 RUN cd darkflow && python3 -m pip install -e .
